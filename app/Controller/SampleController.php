@@ -8,8 +8,9 @@ use Framework\Input;
 
 class SampleController {
     function hello( ) {
+
         return (new Response())
-            ->setContent(Config::get('app.greeting') . Input::get('name', 'guest'))
+            ->setContent(Config::get('app.greeting') . ", " . Input::get('name', 'guest'))
             ->setContentType('text/plain')
             ->setCode(200);
     }
@@ -19,11 +20,11 @@ class SampleController {
         $message = print_r($result, true);
 
         $result = DB::connection('write')
-            ->select('select * from user where created_at > interval ? days limit ?', 100, 2 );
+            ->select('select * from user where created_at > now() - interval ? day limit ?', 100, 2 );
         $message .= print_r($result, true);
 
         $result = DB::connection('write')
-            ->select('select * from user where created_at > interval :interval days limit :limit',
+            ->select('select * from user where created_at > now() - interval :interval day limit :limit',
                 array(':limit'=>5, ':interval'=>100) );
         $message .= print_r($result, true);
 
