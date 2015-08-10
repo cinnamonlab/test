@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Controller;
+use Framework\Blade\View;
 use Framework\Config;
 use Framework\DB\DB;
+use Framework\Log\Log;
+use Framework\Redis\Redis;
 use Framework\Response;
 use Framework\Input;
 
@@ -33,5 +36,19 @@ class SampleController {
             ->setContentType('text/plain')
             ->setCode(200);
 
+    }
+
+    function redis() {
+        Redis::set('test', '123');
+        return Redis::get('test');
+    }
+
+    function log() {
+        Log::getInstance()->error("sample message");
+        return Response::json(array("status"=>"success"));
+    }
+
+    function blade() {
+        return View::make("index")->with("title", "success");
     }
 }
