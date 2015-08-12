@@ -1,0 +1,8 @@
+<html>
+    <body>
+<?php if ( isset($title) ): ?>
+        <h1><?php echo  $title ; ?></h1>
+<?php endif; ?>
+    and the body
+    </body>
+</html>

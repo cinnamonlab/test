@@ -17,7 +17,8 @@
         "cinnamonlab/log": "dev-master",
         "cinnamonlab/redis": "dev-master",
         "cinnamonlab/blade": "dev-master",
-        "cinnamonlab/db": "dev-master"
+        "cinnamonlab/db": "dev-master",
+        "cinnamonlab/queue": "dev-master"
     },
     "autoload": {
         "psr-4": {
